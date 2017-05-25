@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+	<head>	
+		<title>Mario Game</title>
+		<meta charset=utf-8>
+		<meta name="viewport" content = "width=device-width , initial-scale=1.0" >
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
+		<style>
+			*{
+				width:auto;
+				padding:2px;
+				margin:2px;
+			}
+			.playground{
+				position:absolute;
+				left:50%;
+				top:2%;
+				width:500px;
+				height:500px;
+				border:2px solid red;
+				margin:10px;
+				background-image:url(img/oqnfwbC2.gif);
+			}
+			h1{
+				padding:5px;
+				margin:20px;
+				font-family:Georgia sans-serif;
+				font-weight:normal;
+				font-size:100px;
+				text-transform:uppercase;
+			}
+			.stoke{
+				color:#566;
+				-webkit-text-stroke-color:red;
+				-webkit-text-stroke-width:1px;
+			}
+		</style>
+	</head>
+	<body class=" container-fluid" style="background-color:#511">
+		<section class="container" >
+			<ul class="btn-group-md">
+				<li class="btn btn-danger" onclick=moveUp();>UP</li>
+				<li class="btn btn-danger" onclick=moveDown();>DOWN</li>
+				<li class="btn btn-danger" onclick=moveLeft();>LEFT</li>
+				<li class="btn btn-danger" onclick=moveRight();>RIGHT</li>
+				<br><br>
+				<li class="btn btn-success" id="moves"></li>
+			</ul><br>
+			<h1 class="stoke">HELP<br> THE <br>MARIO</h1>
+		</section>
+		<section class="playground container">
+			<p id="playground">
+				<img src="img/big_mario.gif" class="responsive" style="width:80px; height:80px; background-color:black;">
+			</p>
+		</section>
+		<script>
+		var move = 0;
+		document.getElementById("moves").innerHTML="Moves: " + move;
+		var x =document.getElementById("playground");
+		x.style.position="relative"
+		x.style.left=0;
+		x.style.top=0;
+		function moveRight(){
+			if(parseInt(x.style.left) <= 380){
+				x.style.left = parseInt(x.style.left) + 50 + "px";
+				move=parseInt(move)+1;
+				document.getElementById("moves").innerHTML="Moves: " + move;
+			}
+			if(move > 15){
+				move = 0;
+				document.getElementById("moves").innerHTML="Moves: " + move;
+				x.style.left=0;
+				x.style.top=0;
+			}
+		}
+		function moveDown(){
+			if(parseInt(x.style.top) <= 395){
+				x.style.top = parseInt(x.style.top) + 50 + "px";
+				move=parseInt(move)+1;
+				document.getElementById("moves").innerHTML="Moves: " + move;
+			}
+			if(move > 15){
+				move = 0;
+				document.getElementById("moves").innerHTML="Moves: " + move;
+				x.style.left=0;
+				x.style.top=0;
+			}
+		}
+		function moveLeft(){
+			if(parseInt(x.style.left) >= 10){
+				x.style.left = parseInt(x.style.left) - 50 + "px";
+				move=parseInt(move)+1;
+				document.getElementById("moves").innerHTML="Moves: " + move;
+			}
+			if(move > 15){
+				move = 0;
+				document.getElementById("moves").innerHTML="Moves: " + move;
+				x.style.left=0;
+				x.style.top=0;
+			}
+		}
+		function moveUp(){
+			if(parseInt(x.style.top) >= 10){
+				x.style.top= parseInt(x.style.top) - 50 + "px";
+				move=parseInt(move)+1;
+				document.getElementById("moves").innerHTML="Moves: " + move;
+			}
+			if(move > 15){
+
+				move = 0;
+				document.getElementById("moves").innerHTML="Moves: " + move;
+				x.style.left=0;
+				x.style.top=0;
+			}
+		}
+		</script>
+	</body>
+</html>
